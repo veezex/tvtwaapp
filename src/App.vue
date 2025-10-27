@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import TradingViewWidget from "./components/TradingViewWidget.vue";
 
-const startParam = ref<string | null>(null);
-
-onMounted(() => {
-  const urlParams = new URLSearchParams(window.location.search);
-  startParam.value = urlParams.get("tgWebAppStartParam");
-});
+const urlParams = new URLSearchParams(window.location.search);
+const startParam = urlParams.get("tgWebAppStartParam") || undefined;
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">Hello</h1>
-  <p v-if="startParam">Указанный параметр: {{ startParam }}</p>
+  <TradingViewWidget :symbol="startParam" class="w-dvw h-dvh bg-gray-700" />
 </template>
