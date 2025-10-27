@@ -29,8 +29,8 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Remove old docs directory
-        run: rm -rf docs
-
-      - name: Move dist to docs
-        run: mv dist docs
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
