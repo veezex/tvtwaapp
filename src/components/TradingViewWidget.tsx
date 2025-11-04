@@ -6,9 +6,10 @@ interface TradingViewWidgetProps {
 }
 
 const TradingViewWidget = (props: TradingViewWidgetProps) => {
-  const containerId = `tradingview_widget_${Math.random()
-    .toString(36)
-    .substr(2, 9)}`;
+  const containerId = useMemo(
+    () => `tradingview_widget_${Math.random().toString(36).substr(2, 9)}`,
+    [],
+  );
 
   const widgetOptions = useMemo(
     () => ({
@@ -23,7 +24,7 @@ const TradingViewWidget = (props: TradingViewWidgetProps) => {
       allow_symbol_change: true,
       container_id: containerId,
     }),
-    [props.symbol],
+    [props.symbol, containerId],
   );
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const TradingViewWidget = (props: TradingViewWidgetProps) => {
     script.async = true;
     script.innerHTML = JSON.stringify(widgetOptions);
     container.appendChild(script);
-  }, [widgetOptions]);
+  }, [widgetOptions, containerId]);
 
   return (
     <div class={props.class}>
