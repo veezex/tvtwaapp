@@ -1,4 +1,4 @@
-import TradingViewWidget from "./components/TradingViewWidget.tsx";
+import TradingViewWidget from "./components/TradingViewWidget";
 
 const App = () => {
   const urlParams = new URLSearchParams(window.location.search);
