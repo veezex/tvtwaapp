@@ -43,7 +43,7 @@ const TradingViewWidget = (props: TradingViewWidgetProps) => {
       autosize: true,
       symbol: props.symbol || "NASDAQ:AAPL",
       interval: "60",
-      timezone: "Etc/UTC",
+      timezone: getTimezone(),
       theme: theme,
       style: "1",
       locale: "ru",
@@ -74,5 +74,14 @@ const TradingViewWidget = (props: TradingViewWidgetProps) => {
     </div>
   );
 };
+
+function getTimezone(): string {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  } catch (error) {
+    console.error(error);
+  }
+  return "Etc/UTC";
+}
 
 export default TradingViewWidget;

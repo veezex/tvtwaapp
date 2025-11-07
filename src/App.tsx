@@ -7,12 +7,7 @@ const App = () => {
     symbol?: string;
   };
 
-  return (
-    <TradingViewWidget
-      symbol={startObject.symbol}
-      class="w-dvw h-dvh bg-gray-700"
-    />
-  );
+  return <TradingViewWidget symbol={startObject.symbol} class="w-dvw h-dvh" />;
 };
 
 export default App;
