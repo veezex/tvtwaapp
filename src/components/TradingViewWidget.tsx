@@ -46,7 +46,7 @@ const TradingViewWidget = (props: TradingViewWidgetProps) => {
       timezone: getTimezone(),
       theme: theme,
       style: "1",
-      locale: "ru",
+      locale: navigator.language.split("-")[0],
       enable_publishing: false,
       allow_symbol_change: true,
       container_id: containerId,
